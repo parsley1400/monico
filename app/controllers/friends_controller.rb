@@ -36,4 +36,12 @@ class FriendsController < ApplicationController
     @friends = Friend.all
     render 'new'
   end
+
+  def follower
+    user = User.find(params[:follower_id])
+    follower = Friend.find_by(follower_id: user.id, following_id: current_user.id)
+    follower.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
 end

@@ -25,6 +25,10 @@
           <div><%= f.hidden_field :following_id, :value => follower.id %></div>
           <%= f.submit 'リクエスト承認', class: 'friend_submit syonin' %>
         <% end %>
+        <%= form_tag({ :controller => 'friends', :action => 'follower' }, { :method => :post}) do %>
+          <%= hidden_field_tag :follower_id, follower.id  %>
+            <%= submit_tag "削除", class: 'friend_delete'%>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post  '/groups/sleep/:id',   to: 'groups#sleep'
   post  '/groups/reset/:id',   to: 'groups#reset'
   get  '/users/:id/delete',   to: 'users#delete'
+  post  '/follower/:id/delete',   to: 'friends#follower'
 
   resources :users, only: [ :new, :create, :show, :edit, :update, :destroy ]
   resources :friends, only: [ :new, :create, :show ]

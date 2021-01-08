@@ -18,6 +18,7 @@
 <div class="friends">
   <% unless @users == nil %>
   <% @users.each do |user| %>
+
     <div class="user_image_name">
     <% if user.image? %>
       <%= image_tag user.image.url, class: "usericon" %>
@@ -39,9 +40,12 @@
         <%= f.submit 'フレンド申請', class: 'friend_submit none' %>
       <% end %>
     <% end %>
+
     </div>
+
   <% end %>
   <% end %>
+
 </div>
 
 </div>
