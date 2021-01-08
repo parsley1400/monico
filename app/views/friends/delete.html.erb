@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/friends.scss">
+</head>
+<body id="delete_body">
+<div class="wrapper">
+  <p>本当にフレンド登録を削除しますか？</p>
+  <%= form_tag({ :controller => 'friends', :action => 'break' }, { :method => :post}) do %>
+    <%= hidden_field_tag :friend_id, @friend.id  %>
+    <button type="button"><%= submit_tag "削除", class: 'delete_button'%></button>
+  <% end %>
+  <%= link_to "/users/#{@user.id}" do %>
+    <button type="button">戻る</button>
+  <% end %>
+</div>
+</body>
+</html>

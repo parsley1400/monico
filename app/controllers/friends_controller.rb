@@ -44,4 +44,25 @@ class FriendsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def following
+    user = User.find(params[:following_id])
+    following = Friend.find_by(follower_id: current_user.id, following_id: user.id)
+    following.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
+  def delete
+    @user = User.find(current_user.id)
+    @friend = User.find(params[:id])
+    render 'delete'
+  end
+
+  def break
+    friend = User.find(params[:friend_id])
+    friend_1 = Friend.find_by(follower_id: friend.id, following_id: current_user.id)
+    friend_2 = Friend.find_by(following_id: friend.id, follower_id: current_user.id)
+    friend_1.destroy
+    friend_2.destroy
+    redirect_to controller: :users, action: :show, id: current_user.id
+  end
 end

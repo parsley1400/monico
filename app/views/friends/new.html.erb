@@ -32,7 +32,7 @@
         <% if @friends.find_by(follower_id: user.id, following_id: current_user.id) %>
           <p class="friend_submit both">フレンド</p>
         <% else %>
-          <p class="friend_submit one">申請済</p>
+          <%# <p class="friend_submit one">申請済</p> %>
         <% end %>
       <% elsif @friends.find_by(follower_id: user.id, following_id: current_user.id) %>
         <%= f.submit 'リクエスト承認', class: 'friend_submit syonin' %>
@@ -41,6 +41,14 @@
       <% end %>
     <% end %>
 
+<% if @friends.find_by(follower_id: current_user.id, following_id: user.id) %>
+    <% unless @friends.find_by(follower_id: user.id, following_id: current_user.id) %>
+        <%= form_tag({ :controller => 'friends', :action => 'following' }, { :method => :post}) do %>
+          <%= hidden_field_tag :following_id, user.id  %>
+            <%= submit_tag "申請取消", class: 'friend_submit one'%>
+        <% end %>
+    <% end %>
+  <% end %>
     </div>
 
   <% end %>

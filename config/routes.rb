@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   post  '/groups/reset/:id',   to: 'groups#reset'
   get  '/groups/how',   to: 'groups#how'
   get  '/users/:id/delete',   to: 'users#delete'
-  post  '/follower/:id/delete',   to: 'friends#follower'
+  post  '/follower/delete',   to: 'friends#follower'
+  post  '/following/delete',   to: 'friends#following'
+  get  '/friends/:id/delete',   to: 'friends#delete'
+  post  '/friends/break',   to: 'friends#break'
 
   resources :users, only: [ :new, :create, :show, :edit, :update, :destroy ]
   resources :friends, only: [ :new, :create, :show ]

@@ -36,6 +36,9 @@
           <%= image_tag "noimg.jpg", class: "friendicon" %>
         <% end %>
         <p class="friendname"><%= friend.name %></p>
+  <%= link_to "/friends/#{friend.id}/delete", class:"friend_delete_link" do %>
+    <i class="fas fa-trash-alt delete_trash"></i>
+  <% end %>
        </div>
       <% end %>
   </div>
