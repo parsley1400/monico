@@ -20,7 +20,7 @@
       <% if @group.time %>
         <% if @wakeup.wake_up %>
           <p class="group_call wakeup_call"><a href="tel:<%= @user.call %>"><i class="fas fa-phone-volume"></i></a></p>
-          <p class="wakeup_p">Wake Up!</p>
+          <p class="wakeup_p">Woke Up!</p>
         <% else %>
           <p class="group_call sleeping_call"><a href="tel:<%= @user.call %>"><i class="fas fa-phone-volume"></i></a></p>
           <p class="sleeping_p">Sleeping…</p>
@@ -38,7 +38,7 @@
       <% if @group.time %>
         <% if member.wake_up %>
           <p class="group_call wakeup_call"><a href="tel:<%= User.find(member.user_id).call %>"><i class="fas fa-phone-volume"></i></a></p>
-          <p class="wakeup_p">Wake Up!</p>
+          <p class="wakeup_p">Woke Up!</p>
         <% else %>
           <p class="group_call sleeping_call"><a href="tel:<%= User.find(member.user_id).call %>"><i class="fas fa-phone-volume"></i></a></p>
           <p class="sleeping_p">Sleeping…</p>
