@@ -64,7 +64,7 @@
           <p class="difference_time">Monicoを<strong><%= time_ago_in_words(@new_time) %>超過</strong></p>
         <% end %>
       <%= form_tag({ :controller => 'groups', :action => 'wakeup' }, { :method => :post}) do %>
-        <%= submit_tag "WakeUp!", class: 'wakeup_button' %>
+        <%= submit_tag "WokeUp!", class: 'wakeup_button' %>
       <% end %>
       <%= form_tag({ :controller => 'groups', :action => 'reset' }, { :method => :post}) do %>
         <%= submit_tag "RESET Monico", class: 'reset_button' %>
