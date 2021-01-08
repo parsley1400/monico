@@ -44,9 +44,10 @@
 
 .howto_link{
   font-size:15px;
-  position:absolute;
+  position:fixed;
   top:3vh;
   right:5vw;
+  z-index:2;
 }
 
 .group_number{
@@ -60,12 +61,14 @@
   align-items:center;
   background-color:#F8E9D1;
   font-size:20px;
+  z-index:2;
 }
 
 #mygroups{
   width:100%;
   overflow:hidden;
   padding-top:30px;
+  padding-bottom:120px;
 }
 
 #mygroup{
