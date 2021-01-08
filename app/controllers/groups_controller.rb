@@ -98,6 +98,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def how
+    render :how
+  end
+
   private
 
   def group_params

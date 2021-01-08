@@ -42,6 +42,13 @@
   background-color:#F8E9D1;
 }
 
+.howto_link{
+  font-size:15px;
+  position:absolute;
+  top:3vh;
+  right:5vw;
+}
+
 .group_number{
   position:fixed;
   top:0;
@@ -342,4 +349,23 @@
   display:flex;
   align-items:center;
   color:#F8E9D1;
+}
+
+// how
+#group_how{
+  background-color:#F8E9D1;
+}
+
+#group_how img{
+  width:100%;
+  padding-bottom:5vh;
+}
+
+#group_how .arrow{
+  position:fixed;
+  top:0;
+  left:20px;
+  height:80px;
+  display:flex;
+  align-items:center;
 }

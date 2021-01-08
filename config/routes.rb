@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post '/groups/time/:id',  to: 'groups#time'
   post  '/groups/sleep/:id',   to: 'groups#sleep'
   post  '/groups/reset/:id',   to: 'groups#reset'
+  get  '/groups/how',   to: 'groups#how'
   get  '/users/:id/delete',   to: 'users#delete'
   post  '/follower/:id/delete',   to: 'friends#follower'
 
