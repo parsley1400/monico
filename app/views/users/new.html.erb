@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/user.scss">
+</head>
+<body id="new_body">
+<div class="wrapper new_wrapper">
+<a href="/"><i class="fas fa-chevron-left arrow"></i></a>
+
+  <%= form_for(@user) do |f| %>
+  <div class="form-group new_form">
+    <%= f.label :image, '画像：' %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="form-group new_form">
+    <%= f.label :name, 'ユーザーネーム：' %>
+    <%= f.text_field :name, :placeholder => "", class: 'new_text', :required => true %>
+  </div>
+
+  <div class="form-group new_form">
+    <%= f.label :call, '電話番号：' %>
+    <%= f.text_field :call, :placeholder => "ex)000-0000-0000", class: 'new_text', :required => true %>
+  </div>
+
+  <div class="form-group new_form">
+    <%= f.label :password, 'パスワード：' %>
+    <%= f.password_field :password, :placeholder => "4文字以上", class: 'new_text', :required => true %>
+  </div>
+
+  <div class="form-group new_form">
+    <%= f.label :password_confirmation, 'パスワード確認：' %>
+    <%= f.password_field :password_confirmation, class: 'new_text', :required => true %>
+  </div>
+
+  <%= f.submit '新規登録', class: 'submit' %>
+<% end %>
+</div>
+</body>
+</html>

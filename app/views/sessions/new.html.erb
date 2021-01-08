@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/session.scss">
+</head>
+<body id="login_body">
+<div class="session_wrapper">
+<a href="/"><i class="fas fa-chevron-left arrow"></i></a>
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <div class="form-group new_form">
+    <%= f.label :name, 'ユーザーネーム：' %>
+    <%= f.text_field :name, class: 'new_text' %>
+  </div>
+
+  <div class="form-group new_form">
+    <%= f.label :password, 'パスワード：' %>
+    <%= f.password_field :password, class: 'new_text' %>
+  </div>
+
+  <%= f.submit 'ログイン', class: 'login_submit' %>
+  <% end %>
+</div>
+</body>
+</html>

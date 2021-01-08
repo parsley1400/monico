@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/group.scss">
+</head>
+<body id="group_index"></body>
+<div class="wrapper">
+
+  <p class="group_number">グループ(<%= @groups.length %><%= @time %>)</p>
+  <div id="mygroups">
+      <% @groups.each do |group|%>
+      <div id="mygroup">
+      <a href="/groups/<%= Group.find(group.group_id).id %>">
+       <div class="user_image_name">
+        <% if Group.find(group.group_id).image? %>
+          <%= image_tag Group.find(group.group_id).image.url, class: "friendicon" %>
+        <% else %>
+          <%= image_tag "noimg.jpg", class: "friendicon" %>
+        <% end %>
+        <% users = UserGroup.where(group_id: group.group_id) %>
+        <p class="username"><%= Group.find(group.group_id).name %>(<%= users.length %>)</p>
+       </div>
+        <%= link_to "groups/#{group.group_id}/edit", class:"group_edit_button" do %>
+          <i class="fas fa-pen edit_mark"></i>
+        <% end %>
+        <%= link_to "/groups/add/#{Group.find(group.group_id).id}" do %>
+          <button type="button" class="group_add_to">+</button>
+        <% end %>
+      </a>
+      </div>
+      <% end %>
+  </div>
+
+  <div class="add_group">
+  <%= link_to :new_group, class:"button_link" do %>
+    <button type="button" class="add_to">+</button><p>グループ作成</p>
+  <% end %>
+  </div>
+
+  <div class="user_links">
+    <a class="user_link" href="/users/<%= current_user.id %>">ユーザー</a>
+    <a class="group_link" href="/groups">グループ</a>
+  </div>
+</div>
+</body>
+</html>

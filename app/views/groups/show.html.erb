@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/group.scss">
+</head>
+<body id="group_show">
+<div class="wrapper">
+  <p class="group_title"><%= @group.name %>(<%= @members.length + 1%>)</p>
+  <div id="group_members">
+      <div class="friend_image_name">
+        <% if @user.image? %>
+          <%= image_tag @user.image.url, class: "friendicon" %>
+        <% else %>
+          <%= image_tag "noimg.jpg", class: "friendicon" %>
+        <% end %>
+        <p class="friendname"><%= @user.name %></p>
+      <% if @group.time %>
+        <% if @wakeup.wake_up %>
+          <p class="group_call wakeup_call"><a href="tel:<%= @user.call %>"><i class="fas fa-phone-volume"></i></a></p>
+          <p class="wakeup_p">Wake Up!</p>
+        <% else %>
+          <p class="group_call sleeping_call"><a href="tel:<%= @user.call %>"><i class="fas fa-phone-volume"></i></a></p>
+          <p class="sleeping_p">Sleeping…</p>
+        <% end %>
+      <% end %>
+       </div>
+      <% @members.each do |member|%>
+       <div class="friend_image_name">
+        <% if User.find(member.user_id).image? %>
+          <%= image_tag User.find(member.user_id).image.url, class: "friendicon" %>
+        <% else %>
+          <%= image_tag "noimg.jpg", class: "friendicon" %>
+        <% end %>
+        <p class="friendname"><%= User.find(member.user_id).name %></p>
+      <% if @group.time %>
+        <% if member.wake_up %>
+          <p class="group_call wakeup_call"><a href="tel:<%= User.find(member.user_id).call %>"><i class="fas fa-phone-volume"></i></a></p>
+          <p class="wakeup_p">Wake Up!</p>
+        <% else %>
+          <p class="group_call sleeping_call"><a href="tel:<%= User.find(member.user_id).call %>"><i class="fas fa-phone-volume"></i></a></p>
+          <p class="sleeping_p">Sleeping…</p>
+        <% end %>
+      <% end %>
+       </div>
+      <% end %>
+  </div>
+  <% unless @group.time %>
+    <div class="datetime_input">
+      <%= form_tag({ :controller => 'groups', :action => 'time' }, { :method => :post}) do %>
+        <%= datetime_select :date, :date, {use_month_numbers: true}, {class: "datetime_form"} %>
+        <%= submit_tag "SET Monico", class: 'datetime_submit' %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="wakeup_button_cover">
+        <% @new_time = @group.time - (60*60*9) %>
+          <p class="monico_time">Monico:<strong><%= @new_time.to_s(:datetime)  %></strong></p>
+        <% if @new_time > DateTime.current %>
+          <p class="difference_time">Monicoまであと<strong><%= time_ago_in_words(@new_time) %></strong></p>
+        <% else%>
+          <p class="difference_time">Monicoを<strong><%= time_ago_in_words(@new_time) %>超過</strong></p>
+        <% end %>
+      <%= form_tag({ :controller => 'groups', :action => 'wakeup' }, { :method => :post}) do %>
+        <%= submit_tag "WakeUp!", class: 'wakeup_button' %>
+      <% end %>
+      <%= form_tag({ :controller => 'groups', :action => 'reset' }, { :method => :post}) do %>
+        <%= submit_tag "RESET Monico", class: 'reset_button' %>
+      <% end %>
+      <%= form_tag({ :controller => 'groups', :action => 'sleep' }, { :method => :post}) do %>
+        <%= submit_tag "Sleeping…", class: 'sleep_button' %>
+      <% end %>
+    </div>
+  <% end %>
+    <a href="/groups"><i class="fas fa-chevron-left arrow"></i></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/group.scss">
+</head>
+<body id="group_new">
+<div class="wrapper">
+<a href="/groups"><i class="fas fa-chevron-left arrow"></i></a>
+
+  <%= form_for(@group) do |f| %>
+  <div class="form-group new_form">
+    <%= f.label :image, '画像：' %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="form-group new_form">
+    <%= f.label :name, 'グループ名：' %>
+    <%= f.text_field :name, :required => true, class: 'new_text' %>
+  </div>
+
+  <%= f.submit '作成', class: 'submit' %>
+  <% end %>
+</div>
+</body>
+</html>

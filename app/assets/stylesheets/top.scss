@@ -1,0 +1,48 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Fredoka One','Kosugi Maru', sans-serif;
+}
+
+#top_wrapper{
+  background:#F8E9D1;
+}
+
+h1{
+  color:#F18D1D;
+  text-align:center;
+  font-size:60px;
+  margin-top:30vh;
+}
+
+#title{
+  color:#F18D1D;
+  text-align:center;
+  font-size:18px;
+  margin-top:10px;
+}
+
+.buttons{
+  width:180px;
+  margin:10vh auto;
+}
+
+.button_link{
+  text-decoration:none;
+}
+
+button{
+  display:block;
+  width:180px;
+  height:40px;
+  margin:10px 0;
+  border:none;
+  font-size:18px;
+  background-color:#F18D1D;
+  color:#F8E9D1;
+  border-radius:15px;
+}
+
+.login{
+  background-color:#A1C3E7;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/user.scss">
+</head>
+<body id="show_body">
+<div class="wrapper show_wrapper">
+  <div id="myprofile">
+  <div class="image_name">
+  <% if @user.image? %>
+  <%= image_tag @user.image.url, class: "myicon" %>
+  <% else %>
+  <%= image_tag "noimg.jpg", class: "myicon" %>
+  <% end %>
+  <p class="myname"><%= @user.name %></p>
+  <%= link_to "#{@user.id}/edit", class:"user_edit_button" do %>
+    <i class="fas fa-pen"></i>
+  <% end %>
+  </div>
+  Tell: <p class="mycall"><%= @user.call %></p><br>
+
+  <%= link_to "ログアウト", logout_path, method: :delete %>
+  <%= link_to "フレンドリクエスト(#{@followers.length})", friend_path, method: :get %>
+  </div>
+
+  <p class="number">フレンド(<%= @friends.length %>)</p>
+  <div id="myfriends">
+      <% @friends.each do |friend|%>
+       <div class="friend_image_name">
+        <% if friend.image? %>
+          <%= image_tag friend.image.url, class: "friendicon" %>
+        <% else %>
+          <%= image_tag "noimg.jpg", class: "friendicon" %>
+        <% end %>
+        <p class="friendname"><%= friend.name %></p>
+       </div>
+      <% end %>
+  </div>
+
+  <div class="add_friend">
+  <%= link_to :new_friend, class:"button_link" do %>
+    <button type="button" class="add_to">+</button><p>フレンド追加</p>
+  <% end %>
+  </div>
+
+  <div class="user_links">
+    <a class="user_link" href="/users/<%= current_user.id %>">ユーザー</a>
+    <a class="group_link" href="/groups">グループ</a>
+  </div>
+</div>
+</body>
+</html>

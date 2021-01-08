@@ -1,0 +1,40 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+.session_wrapper{
+  width:90vw;
+  height:90vh;
+  margin:5vh auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+// login
+.session_wrapper .arrow{
+  position:fixed;
+  top:0;
+  left:20px;
+  height:80px;
+  display:flex;
+  align-items:center;
+  color:#F8E9D1;
+}
+
+#login_body{
+  background-color:#A1C3E7;
+}
+
+.login_submit{
+  display:block;
+  width:180px;
+  height:40px;
+  margin:80px auto 0;
+  border:none;
+  font-size:18px;
+  background-color:#F8E9D1;
+  border-radius:15px;
+  color:#A1C3E7;
+}

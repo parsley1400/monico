@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/user.scss">
+</head>
+<body id="delete_body">
+<div class="wrapper">
+  <p>本当にアカウントを削除しますか？</p>
+  <%= form_tag({ :controller => 'users', :action => 'destroy' }, { :method => :delete}) do %>
+    <button type="button"><%= submit_tag "削除", class: 'delete_button'%></button>
+  <% end %>
+  <%= link_to "/users/#{@user.id}/edit" do %>
+    <button type="button">戻る</button>
+  <% end %>
+</div>
+</body>
+</html>

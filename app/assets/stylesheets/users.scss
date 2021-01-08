@@ -1,0 +1,281 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+img{
+  object-fit: cover;
+}
+
+.wrapper{
+  width:90vw;
+  height:90vh;
+  margin:5vh auto;
+}
+
+// new
+#new_body{
+  background-color:#F18D1D;
+}
+
+#new_body .arrow{
+  position:fixed;
+  top:0;
+  left:20px;
+  height:80px;
+  display:flex;
+  align-items:center;
+  color:#F8E9D1;
+}
+
+.new_wrapper{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.new_form{
+  margin-bottom:20px;
+  font-size:12px;
+  color::#F8E9D1;
+}
+
+.new_text{
+  border-radius:5px;
+  width:150px;
+  height:20px;
+  border:solid #F8E9D1 1px;
+}
+
+.submit{
+  display:block;
+  width:180px;
+  height:40px;
+  margin:80px auto 0;
+  border:none;
+  font-size:18px;
+  background-color:#F8E9D1;
+  color:#F18D1D;
+  border-radius:15px;
+}
+
+// login
+#login_body{
+  background-color:#A1C3E7;
+}
+
+.login_submit{
+  color:#A1C3E7;
+}
+
+// show
+#show_body{
+  background-color:#F8E9D1;
+}
+
+#myprofile{
+  position:fixed;
+  top:0;
+  left:0;
+  background-color:#F8E9D1;
+  padding:2vh 5vw;
+}
+
+#show_body a{
+  // color:#A1C3E7;
+}
+
+.image_name{
+  width:100%;
+  height:100px;
+  display:flex;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.myicon{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+}
+
+.myname{
+  font-size:24px;
+  margin-left:20px;
+}
+
+.mycall{
+  font-size:18px;
+  text-decoration:none;
+  color:#000;
+  display:inline-block;
+}
+
+.add_friend{
+  position:fixed;
+  width:100vw;
+  height:60px;
+  bottom:10vh;
+  left:0;
+  padding-left:5vw;
+  background-color:#F8E9D1;
+}
+
+.add_friend .add_to{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  font-size:24px;
+  display:inline;
+}
+
+.add_friend p{
+  display:inline;
+  font-size:18px;
+  color:#000;
+  margin-left:10px;
+  line-height:60px;
+}
+
+#show_body .number{
+  font-family: 'Kosugi Maru', sans-serif;
+  position:fixed;
+  top:180px;
+  left:0;
+  width:100vw;
+  height:60px;
+  padding-left:5vw;
+  display:flex;
+  align-items:center;
+  background-color:#F8E9D1;
+}
+
+#myfriends{
+  width:100%;
+  overflow:hidden;
+  padding-top:210px;
+  padding-bottom:150px;
+}
+
+#myfriends p{
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.friend_image_name{
+  width:100%;
+  height:50px;
+  display:flex;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.friendicon{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+}
+
+.friendname{
+  font-size:12px;
+  margin-left:10px;
+}
+
+.user_edit_button i{
+  color:#F18D1D;
+  margin-left:10px;
+  font-size:18px;
+}
+
+.user_links{
+  position:fixed;
+  width:100vw;
+  height:10vh;
+  bottom:0vh;
+  left:0;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  background-color:#F8E9D1;
+}
+
+.user_links a{
+  text-decoration:none;
+  color:#000;
+  height:13px;
+  width:70px;
+  text-align:center;
+}
+
+.user_link{
+  border-bottom:10px solid #F18D1D;
+}
+
+.group_link{
+  border-bottom:10px solid #A1C3E7;
+}
+
+#show_body .user_link{
+  opacity:0.5;
+}
+
+// edit
+#edit_body{
+  background-color:#F18D1D;
+}
+
+#edit_body .arrow{
+  position:fixed;
+  top:0;
+  left:20px;
+  height:80px;
+  display:flex;
+  align-items:center;
+  color:#F8E9D1;
+}
+
+#edit_body .wrapper{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column
+}
+
+.delete_link{
+  width:100%;
+  text-align:center;
+  margin-top:30px;
+}
+
+// delete
+#delete_body{
+  background-color:#A1C3E7;
+}
+
+#delete_body .wrapper{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column
+}
+
+#delete_body p{
+  margin-bottom:30px;
+  font-size:18px;
+}
+
+#delete_body button{
+  background-color:#F8E9D1;
+  color:#000;
+  font-size:15px;
+}
+
+#delete_body a{
+  text-decoration:none;
+}
+
+.delete_button{
+  border:none;
+  background-color:transparent;
+  font-size:15px;
+}

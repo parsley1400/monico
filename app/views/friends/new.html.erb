@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/friends.scss">
+</head>
+<body id="friend_new">
+<div class="wrapper">
+<div class="forms">
+  <a href="/users/<%= current_user.id %>"><i class="fas fa-chevron-left arrow"></i></a>
+  <%= form_tag({ :controller => 'friends', :action => 'search' }, { :method => :get}) do %>
+    <%= text_field_tag :search, '', :placeholder => "検索", class: 'search_text' %>
+  <% end %>
+</div>
+
+<div class="friends">
+  <% unless @users == nil %>
+  <% @users.each do |user| %>
+    <div class="user_image_name">
+    <% if user.image? %>
+      <%= image_tag user.image.url, class: "usericon" %>
+    <% else %>
+      <%= image_tag "noimg.jpg", class: "usericon" %>
+    <% end %>
+    <p class="username"><%= user.name %></p>
+    <%= form_for(@friend) do |f| %>
+    <div><%= f.hidden_field :following_id, :value => user.id %></div>
+      <% if @friends.find_by(follower_id: current_user.id, following_id: user.id) %>
+        <% if @friends.find_by(follower_id: user.id, following_id: current_user.id) %>
+          <p class="friend_submit both">フレンド</p>
+        <% else %>
+          <p class="friend_submit one">申請済</p>
+        <% end %>
+      <% elsif @friends.find_by(follower_id: user.id, following_id: current_user.id) %>
+        <%= f.submit 'リクエスト承認', class: 'friend_submit syonin' %>
+      <% else %>
+        <%= f.submit 'フレンド申請', class: 'friend_submit none' %>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
+  <% end %>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/friends.scss">
+</head>
+<body id="friend_show">
+<div class="wrapper">
+  <div class="forms user-request-form">
+    <a href="/users/<%= current_user.id %>"><i class="fas fa-chevron-left arrow"></i></a>
+    <p class="number">フレンドリクエスト(<%= @followers.length %>)</p>
+  </div>
+  <div class="friends">
+    <% @followers.each do |follower| %>
+      <div class="user_image_name">
+        <% if follower.image? %>
+          <%= image_tag follower.image.url, class: "usericon" %>
+        <% else %>
+          <%= image_tag "noimg.jpg", class: "usericon" %>
+        <% end %>
+        <p class="username"><%= follower.name %></p>
+        <%= form_for(@friend) do |f| %>
+          <div><%= f.hidden_field :following_id, :value => follower.id %></div>
+          <%= f.submit 'リクエスト承認', class: 'friend_submit syonin' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>

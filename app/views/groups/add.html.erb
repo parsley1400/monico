@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/stylesheets/group.scss">
+</head>
+<body id="group_add">
+<div class="wrapper">
+<div class="forms">
+  <a href="/groups"><i class="fas fa-chevron-left arrow"></i></a>
+  <%= form_tag({ :controller => 'groups', :action => 'search' }, { :method => :get}) do %>
+    <%= text_field_tag :search, '', :placeholder => "検索", class: 'search_text' %>
+  <% end %>
+</div>
+
+<div class="friends">
+  <% unless @friends == nil %>
+  <% @friends.each do |friend| %>
+    <div class="user_image_name">
+    <% if friend.image? %>
+      <%= image_tag friend.image.url, class: "usericon" %>
+    <% else %>
+      <%= image_tag "noimg.jpg", class: "usericon" %>
+    <% end %>
+    <p class="username"><%= friend.name %></p>
+    <%= form_tag({ :controller => 'groups', :action => 'make' }, { :method => :post}) do %>
+      <%= hidden_field_tag :friend_id, friend.id %>
+      <% if UserGroup.find_by(user_id: friend.id, group_id: params[:id]) %>
+        <%= submit_tag "消去", class: 'group_delete_button group_make_button' %>
+      <% else %>
+        <%= submit_tag "追加", class: 'group_add_button group_make_button' %>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
+  <% end %>
+</div>
+
+</div>
+</body>
+</html>
