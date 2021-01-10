@@ -23,6 +23,10 @@ class GroupsController < ApplicationController
     @members = UserGroup.where(group_id: @group.id).where.not(user_id: current_user.id)
     @user = User.find(current_user.id)
     @wakeup = UserGroup.find_by(user_id: current_user.id, group_id: params[:id])
+    unless UserGroup.find_by(user_id: current_user.id, group_id: params[:id])
+      log_out if logged_in?
+      redirect_to root_url
+    end
   end
 
   def edit

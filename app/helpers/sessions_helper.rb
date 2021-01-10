@@ -22,4 +22,10 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  private
+
+    def require_sign_in!
+      redirect_to login_path unless logged_in?
+    end
 end
